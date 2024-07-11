@@ -122,7 +122,7 @@ class TimeStepClassifier:
         X, window_ids = self._get_X_and_y(data, is_train=False)
         preds = self.model.predict_proba(X)
         for i in range(len(preds)):
-            if preds[i].shape[0] > len(self.data_schema.target_classes):
+            if preds[i].shape[1] > len(self.data_schema.target_classes):
                 preds[i] = preds[i][:-1]
         preds = np.array(preds)
         preds = preds.transpose(1, 0, 2)
